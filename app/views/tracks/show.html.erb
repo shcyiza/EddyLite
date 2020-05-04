@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @track.artist_id %>
+</p>
+
+<p>
+  <strong>Isrc:</strong>
+  <%= @track.isrc %>
+</p>
+
+<p>
+  <strong>Track name:</strong>
+  <%= @track.track_name %>
+</p>
+
+<%= link_to 'Edit', edit_track_path(@track) %> |
+<%= link_to 'Back', tracks_path %>
