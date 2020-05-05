@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_193352) do
+ActiveRecord::Schema.define(version: 2020_05_05_193626) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 2020_05_04_193352) do
     t.integer "year"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "cover_art_url"
     t.index ["artist_id"], name: "index_albums_on_artist_id"
   end
 
@@ -44,17 +45,21 @@ ActiveRecord::Schema.define(version: 2020_05_04_193352) do
     t.string "saleable_type", null: false
     t.bigint "saleable_id", null: false
     t.string "transaction_type"
-    t.float "label_revenue"
-    t.float "artist_revenu"
+    t.float "label_share"
+    t.float "artist_share"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.float "revenue"
+    t.string "period"
+    t.string "activity_period"
+    t.string "territory"
     t.index ["saleable_type", "saleable_id"], name: "index_sales_on_saleable_type_and_saleable_id"
   end
 
   create_table "tracks", force: :cascade do |t|
     t.bigint "artist_id", null: false
     t.string "isrc"
-    t.string "track_name"
+    t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["artist_id"], name: "index_tracks_on_artist_id"
