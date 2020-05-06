@@ -22,8 +22,11 @@ class Sale < ApplicationRecord
     type_description = json_record['Trans Type Description']
 
     saleable = %w[PS DA].include?(sale_type) ? Album.find_by(upc: saleable_ref) : Track.find_by(isrc: saleable_ref)
-    revenue = json_record['Label Share Net Receipts']
-    artist_share = (revenue * royalty_rate[type_description]) / 100
+
+    # doing revenue by a million so we only compute int's
+    # better for perfs. fin-tech secrets ;)
+    revenue = json_record['Label Share Net Receipts'] * 10**6
+    artist_share = ((revenue * royalty_rate[type_description]) / 100).round
     label_share = revenue - artist_share
 
     Sale.find_or_initialize_by(
@@ -40,5 +43,30 @@ class Sale < ApplicationRecord
 
   def sale_rate
     royalty_rate[transaction_type]
+  end
+
+  def self.share_by_instance saleable_i
+    revenue = saleable_i.sales.sum(:revenue)
+    artist_share = saleable_i.sales.sum(:artist_share)
+    label_share = revenue - artist_share
+
+    {
+      track: saleable_i,
+      revenue: revenue,
+      artist_share: artist_share,
+      label_share: label_share
+    }
+  end
+
+  def self.artist_share_by_track(artist_id)
+    Track.includes(:sales).where(artist_id: artist_id).map do |t|
+      Sale.share_by_instance t
+    end
+  end
+
+  def self.artist_share_by_release(artist_id)
+    Album.includes(:sales).where(artist_id: artist_id).map do |t|
+      Sale.share_by_instance t
+    end
   end
 end
