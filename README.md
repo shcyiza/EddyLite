@@ -27,15 +27,16 @@ Last step is to install the front-end dependencies with web-packer
 
 You should be good to launch de dev server now: ```$ rails s``` at ```http://localhost:3000/```
 
-## Tech used
+## Technologies used
+- Ruby 2.6.3
 - Rails 6
 - Vue.js integrated with web-packer
 
 ## What I would have done with more time:
 
-* Integrate Chart JS
+* Integrate Chart JS for percentages insight
 
-* Make view details of a track with releases, revenue and shares
+* Make a view  with the details of a track with releases, revenue and shares etc...
 
 ## Author
 👤 ShCyiza (Patrick Cyiza)
