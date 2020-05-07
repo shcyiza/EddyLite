@@ -1,6 +1,6 @@
 <template>
     <section id="details_container" class="animated" v-if="show">
-        <h1> {{artist.name}}</h1>
+        <h1> {{artist.name}}'s Catalogue</h1>
         <div class="tabs">
             <ul>
                 <li

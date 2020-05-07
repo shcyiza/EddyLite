@@ -15,7 +15,7 @@
                     <br>
                     Releases: <span>{{track.releases.length}}</span>
                     <br>
-                    Last released: <span>{{track.releases.sort((a, b) => b-a)[0].year}}</span>
+                    Last released: <span>{{track.releases.sort((a, b) => b.year-a.year)[0].year}}</span>
                 </div>
             </div>
         </div>

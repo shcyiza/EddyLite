@@ -1,5 +1,5 @@
 <template>
-    <section class="revenue-container">
+    <section class="revenue-container" v-if="statement !== null">
         <div class="revenues_segment" id="revenues_overview">
             <h2>Overall revenue</h2>
             <revenue-details :statement="statement.overview" />

@@ -1,24 +1,41 @@
-# README
+# Eddy Lite 🎵🎵💰
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is my take-home project for Eddy the leading royalty management company.
 
-Things you may want to cover:
+## how to run the project
+Install gem dependencies:
 
-* Ruby version
+```$ bundle install```
 
-* System dependencies
+Create the DB:
 
-* Configuration
+```$ rake db:create```
 
-* Database creation
+Migrate the code:
 
-* Database initialization
+```$ rake db:migrate```
 
-* How to run the test suite
+Run the seeds:
 
-* Services (job queues, cache servers, search engines, etc.)
+```$ rake db:seed```
 
-* Deployment instructions
+The data given by the assignment located in the ```/assignment-files```  directory is seeded.
 
-* ...
+Last step is to install the front-end dependencies with web-packer
+
+```$ yarn install``` or ```$ rake npm install```
+
+You should be good to launch de dev server now: ```$ rails s``` at ```http://localhost:3000/```
+
+## Tech used
+- Rails 6
+- Vue.js integrated with web-packer
+
+## What I would have done with more time:
+
+* Integrate Chart JS
+
+* Make view details of a track with releases, revenue and shares
+
+## Author
+👤 ShCyiza (Patrick Cyiza)
