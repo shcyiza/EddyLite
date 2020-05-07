@@ -7,8 +7,8 @@
     <tr>
       <th>Saleable</th>
       <th>Transaction type</th>
-      <th>Label revenue</th>
-      <th>Artist revenu</th>
+      <th>Label share</th>
+      <th>Artist share</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,11 +18,8 @@
       <tr>
         <td><%= sale.saleable_id %></td>
         <td><%= sale.transaction_type %></td>
-        <td><%= sale.label_revenue %></td>
-        <td><%= sale.artist_revenu %></td>
-        <td><%= link_to 'Show', sale %></td>
-        <td><%= link_to 'Edit', edit_sale_path(sale) %></td>
-        <td><%= link_to 'Destroy', sale, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= sale.label_share %></td>
+        <td><%= sale.artist_share %></td>
       </tr>
     <% end %>
   </tbody>

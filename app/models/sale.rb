@@ -58,13 +58,13 @@ class Sale < ApplicationRecord
     }
   end
 
-  def self.artist_share_by_track(artist_id)
+  def self.share_by_track(artist_id)
     Track.includes(:sales).where(artist_id: artist_id).map do |t|
       Sale.share_by_instance t
     end
   end
 
-  def self.artist_share_by_release(artist_id)
+  def self.share_by_release(artist_id)
     Album.includes(:sales).where(artist_id: artist_id).map do |t|
       Sale.share_by_instance t
     end

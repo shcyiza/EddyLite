@@ -1,0 +1,58 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+$bg-color: #0a1753
+$main-gradient: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%)
+html
+  background-color: rgba(0, 26, 93, 0.73)
+  overflow: auto
+
+div, section, h1, h2, h3, h4, p, strong
+  color: white
+
+h1
+  font-size: 3rem
+  font-family: Oswald
+  color: $bg-color
+
+.navbar
+  background-color: $bg-color
+  color: white
+  height: 3vh
+
+
+.navbar-brand
+  background: linear-gradient(141deg,  #ffffff 0%, #1fc8db 51%, #ffffff 75%)
+  -webkit-box-shadow: 0px -1px 5px 9px rgba(0,0,0,0.75)
+  -moz-box-shadow: 0px -1px 5px 9px rgba(0,0,0,0.75)
+  box-shadow: 0px -1px 5px 9px rgba(0,0,0,0.75)
+
+.navbar-item
+  color: white
+  font-weight: bold
+  &:hover
+    background: $main-gradient
+    color: white !important
+
+.myInput
+  background-image: url('https://lh3.googleusercontent.com/proxy/20g0GqA_umGrPE7cCeuBCHc-i3lxSTu__wMslr3VNCN7r-HRJPB1hiy3mMJlIJcRp9RYBZ0yTEmcK_jr0e-ozpzOQk7SQH7V9Av2v-3P0XyhkLXWDJm5q_9LO_9tq5JqZElHCA')
+  background-position: 10px 12px
+  background-repeat: no-repeat
+  width: 100%
+  font-size: 11px
+  padding: 12px 20px 12px 40px
+  border: 1px solid #ddd
+  margin-bottom: 12px
+

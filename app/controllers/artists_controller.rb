@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ArtistsController < ApplicationController
-  before_action :set_artist, only: [:show, :edit, :update, :destroy]
+  before_action :set_artist, only: [:tracks]
 
   # GET /artists
   # GET /artists.json
@@ -9,16 +11,14 @@ class ArtistsController < ApplicationController
 
   # GET /artists/1
   # GET /artists/1.json
-  def show
-  end
+  def tracks
+    @tracks = Track.includes(:albums).where(artist_id: @artist.id).map do |t|
+      hash = t.as_json(root: false)
+      hash['releases'] = t.albums
+      hash
+    end
 
-  # GET /artists/new
-  def new
-    @artist = Artist.new
-  end
-
-  # GET /artists/1/edit
-  def edit
+    render json: @tracks, status: :ok
   end
 
   # POST /artists
@@ -62,13 +62,14 @@ class ArtistsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_artist
-      @artist = Artist.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def artist_params
-      params.require(:artist).permit(:name)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_artist
+    @artist = Artist.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def artist_params
+    params.require(:artist).permit(:name)
+  end
 end
