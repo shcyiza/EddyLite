@@ -9,18 +9,6 @@ class ArtistsController < ApplicationController
     @artists = Artist.all
   end
 
-  # GET /artists/1
-  # GET /artists/1.json
-  def tracks
-    @tracks = Track.includes(:albums).where(artist_id: @artist.id).map do |t|
-      hash = t.as_json(root: false)
-      hash['releases'] = t.albums
-      hash
-    end
-
-    render json: @tracks, status: :ok
-  end
-
   # POST /artists
   # POST /artists.json
   def create

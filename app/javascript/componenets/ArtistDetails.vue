@@ -41,19 +41,21 @@ export default {
     },
     computed: {
         searchResults() {
-            const search_input = this.search_input.toLowerCase();
-            return this.search_input
-                ? this.tracks.filter(
+            if (this.search_input) {
+                const search_input = this.search_input.toLowerCase();
+                return this.tracks.filter(
                     t =>
                         t.title.toLowerCase().includes(search_input)
-                        || t.releases.find(r =>  r.year === Number(search_input))
+                        || t.releases.find(r => r.year === Number(search_input))
                 )
-                : this.tracks
+            }
+
+            return this.tracks
         }
     },
     methods: {
         fetchTracks() {
-            axios.get(`/artists/${this.artist.id}/tracks`).then(resp => {
+            axios.get(`api/artists/${this.artist.id}/tracks`).then(resp => {
                 const { data } = resp;
                 this.tracks = data;
             })
@@ -91,7 +93,6 @@ h1 {
     background: linear-gradient(141deg, #65736d 0%, #126b73 51%, rgba(22, 79, 102, 0) 75%);
     color: black;
     border-radius: 20px;
-    cursor: pointer;
 }
 strong, span {
     color: #34ddec;

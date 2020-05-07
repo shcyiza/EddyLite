@@ -45,14 +45,14 @@ class Sale < ApplicationRecord
     royalty_rate[transaction_type]
   end
 
-  def self.share_by_instance saleable_i
-    revenue = saleable_i.sales.sum(:revenue)
-    artist_share = saleable_i.sales.sum(:artist_share)
+  def self.share_by_instance saleable_item
+    revenue = saleable_item.sales.sum(:revenue)
+    artist_share = saleable_item.sales.sum(:artist_share)
     label_share = revenue - artist_share
 
     {
-      track: saleable_i,
-      revenue: revenue,
+      item: saleable_item,
+      revenues: revenue,
       artist_share: artist_share,
       label_share: label_share
     }

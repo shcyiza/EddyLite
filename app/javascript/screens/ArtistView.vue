@@ -78,12 +78,13 @@ p {
     color: #0a1753;
 }
 .a-container {
-    height: 99vh;
+    height: 100vh;
 }
 .artist-details{
     padding: 25px;
-    height: 99vh;
+    height: 100vh;
     background: linear-gradient(159deg, rgba(0,0,32,1) 51%, rgba(10,23,83,1) 73%);
+    border: rgba(0,0,32,1) solid 4px;
     border-radius: 0 0 0 40px;
     overflow: auto;
 }

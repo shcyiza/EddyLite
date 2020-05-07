@@ -1,5 +1,5 @@
 <template>
-    <section id="details_container" class="animated" v-show="show">
+    <section id="details_container" class="animated" v-if="show">
         <h1> {{artist.name}}</h1>
         <div class="tabs">
             <ul>
@@ -17,21 +17,29 @@
                 </li>
             </ul>
         </div>
+        <div v-show="selected_tab === 0" class="animated fadeIn">
+            <artist-details :artist="artist" class="animated fadeIn"/>
+        </div>
 
-        <artist-details :artist="artist" v-show="selected_tab === 0" class="animated fadeIn"/>
-
-        <div v-show="selected_tab === 1" class="animated slideInRight">Revenues</div>
+        <div v-show="selected_tab === 1" class="animated slideInRight">
+            <revenues :artist="artist" />
+        </div>
     </section>
 </template>
 
 <script>
-
     import ArtistDetails from "./ArtistDetails";
+    import Revenues from "./Revenues";
 
     export default {
     name: "ArtistNav",
-    props: ['artist'],
-    components:{ ArtistDetails },
+    props: {
+        artist: {
+            type: Object,
+            required: true,
+        },
+    },
+    components:{ ArtistDetails, Revenues },
     data() {
         return {
             show: true,
@@ -56,7 +64,6 @@
     watch: {
         artist() {
             this.entrance();
-            this.selected_tab = 0;
         }
     }
 }
