@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <script>
   // inject initial artist data without extra query
   const artists_data = JSON.parse("<%= @artists.to_json  %>".replace(/&quot;/g, '"'))
