@@ -4,7 +4,7 @@
   const logo_url = "<%= image_url 'logo-dark.svg', height: 28 %>"
 </script>
 
-<%= javascript_pack_tag 'artists_view' %>
+<%= javascript_pack_tag 'artists_view', 'data-turbolinks-track': 'reload' %>
 <div id='hello'>
   <app></app>
 </div>
